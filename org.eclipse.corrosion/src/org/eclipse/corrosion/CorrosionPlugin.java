@@ -29,7 +29,7 @@ public class CorrosionPlugin extends AbstractUIPlugin {
 	// The shared instance
 	private static CorrosionPlugin plugin;
 
-	private static synchronized void setSharedInstance(CorrosionPlugin newValue) {
+	private synchronized static void setSharedInstance(CorrosionPlugin newValue) {
 		plugin = newValue;
 	}
 
@@ -41,7 +41,7 @@ public class CorrosionPlugin extends AbstractUIPlugin {
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		setSharedInstance(null);
+		plugin = null;
 		super.stop(context);
 	}
 
