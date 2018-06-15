@@ -33,6 +33,11 @@ pipeline {
 				}
 			}
 		}
+		stage('SonarQube analysis') {
+			steps {
+				sh 'mvn sonar:sonar'
+			}
+		}
 		stage('Deploy') {
 			when {
 				branch 'master'
